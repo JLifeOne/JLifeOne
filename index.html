@@ -1,0 +1,733 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Villa Flower Hill — Chef Plan · Polite Party</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  :root {
+    --sand: #f7f1e3;
+    --sand-2: #efe7d2;
+    --leaf: #1f6b46;
+    --leaf-2: #2f8a5d;
+    --coral: #e2553a;
+    --sun: #f3a712;
+    --ink: #1c2321;
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--sand); color: var(--ink); font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  .leaf-bg { background: var(--leaf); }
+  .leaf-text { color: var(--leaf); }
+  .coral-bg { background: var(--coral); }
+  .coral-text { color: var(--coral); }
+  .sun-bg { background: var(--sun); }
+  .pill { display:inline-flex; align-items:center; gap:.35rem; padding:.2rem .6rem; border-radius:999px; font-size:.72rem; font-weight:600; }
+  .tab-btn { padding:.6rem 1rem; border-radius:.5rem; font-weight:600; font-size:.85rem; color:#444; }
+  .tab-btn.active { background: var(--leaf); color: white; }
+  .card { background:white; border-radius:1rem; box-shadow:0 1px 2px rgba(0,0,0,.04), 0 8px 24px -12px rgba(0,0,0,.08); }
+  .chip { display:inline-block; padding:.15rem .55rem; border-radius:999px; font-size:.7rem; font-weight:600; }
+  .chip-allergy { background:#fff1ee; color:var(--coral); border:1px solid #f8c9bf; }
+  .chip-leaf { background:#e9f5ee; color:var(--leaf); border:1px solid #b9dfc8; }
+  .chip-sun { background:#fff5d6; color:#8a6500; border:1px solid #f3deaa; }
+  details > summary { list-style:none; cursor:pointer; }
+  details > summary::-webkit-details-marker { display:none; }
+  .timeline-grid { display:grid; grid-template-columns: 90px 1fr; gap:0; }
+  .timeline-time { font-variant-numeric: tabular-nums; color:#6b7280; font-size:.78rem; padding-top:.45rem; }
+  .timeline-block { border-left:3px solid #e5e7eb; padding:.45rem 0 .45rem 1rem; margin-left:1rem; position:relative; }
+  .timeline-block::before { content:""; position:absolute; left:-7px; top:.85rem; width:11px; height:11px; border-radius:999px; background:var(--leaf); }
+  .timeline-block.break::before { background:var(--coral); }
+  .timeline-block.service::before { background:var(--sun); }
+  .check { width:1.05rem; height:1.05rem; }
+  .day-tab { padding:.45rem .8rem; border-radius:.5rem; font-weight:600; font-size:.78rem; }
+  .day-tab.active { background:var(--leaf); color:white; }
+  .day-tab:not(.active) { background:#fff; color:#444; border:1px solid #e5e7eb; }
+  .menu-dot { width:6px; height:6px; border-radius:999px; display:inline-block; margin-right:.4rem; vertical-align:middle; }
+  @media print {
+    .no-print { display:none !important; }
+    body { background:white; }
+    .card { box-shadow:none; border:1px solid #e5e7eb; }
+  }
+</style>
+</head>
+<body class="min-h-screen">
+
+<!-- HERO -->
+<header class="leaf-bg text-white">
+  <div class="max-w-6xl mx-auto px-6 py-8">
+    <div class="flex flex-wrap items-start justify-between gap-4">
+      <div>
+        <p class="uppercase tracking-widest text-xs opacity-80">Private Chef · Operating Plan</p>
+        <h1 class="text-3xl md:text-4xl font-bold mt-1">Villa Flower Hill</h1>
+        <p class="mt-1 opacity-90">Montego Bay, Jamaica · Polite Party of 10</p>
+      </div>
+      <div class="text-right text-sm">
+        <div><span class="opacity-70">Arrival</span> <span class="font-semibold">Sat, May 30, 2026</span></div>
+        <div><span class="opacity-70">Departure</span> <span class="font-semibold">Sat, Jun 6, 2026</span></div>
+        <div class="mt-2"><span class="pill bg-white/15">7 nights</span> <span class="pill bg-white/15">10 adults</span> <span class="pill bg-white/15">5 bedrooms</span></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- TABS -->
+<nav class="no-print sticky top-0 z-30 bg-[color:var(--sand)] border-b border-black/5">
+  <div class="max-w-6xl mx-auto px-3 py-2 flex flex-wrap gap-1">
+    <button class="tab-btn active" data-tab="overview">Overview</button>
+    <button class="tab-btn" data-tab="calendar">7-Day Calendar</button>
+    <button class="tab-btn" data-tab="menus">Menus</button>
+    <button class="tab-btn" data-tab="shopping">Shopping List</button>
+    <button class="tab-btn" data-tab="schedule">Daily Schedule</button>
+    <button class="tab-btn" data-tab="allergy">Allergy Protocol</button>
+    <button class="tab-btn" data-tab="logistics">Logistics</button>
+    <button onclick="window.print()" class="ml-auto tab-btn">Print</button>
+  </div>
+</nav>
+
+<main class="max-w-6xl mx-auto px-6 py-8 space-y-10">
+
+<!-- ============ OVERVIEW ============ -->
+<section data-section="overview">
+  <div class="grid md:grid-cols-3 gap-4">
+    <div class="card p-5 md:col-span-2">
+      <h2 class="text-lg font-bold mb-3">Guest Roster — 5 Couples</h2>
+      <div class="grid sm:grid-cols-2 gap-3 text-sm">
+        <div class="border rounded-lg p-3 border-amber-200 bg-amber-50/50">
+          <div class="font-semibold">Joshua &amp; Colleen Polite</div>
+          <div class="text-xs text-gray-500">Host couple · primary contact</div>
+        </div>
+        <div class="border rounded-lg p-3 border-pink-200 bg-pink-50/40">
+          <div class="font-semibold">Miguel &amp; Tonya Sevilla</div>
+          <div class="text-xs text-pink-700 font-medium mt-0.5">🎂 Tonya's birthday — Thu Jun 4</div>
+        </div>
+        <div class="border rounded-lg p-3">
+          <div class="font-semibold">Rob &amp; Sierra Howard</div>
+          <div class="text-xs text-gray-500">Arrive earlier — UA 1633, 3:26 PM</div>
+        </div>
+        <div class="border rounded-lg p-3">
+          <div class="font-semibold">Masai &amp; Tasha Turner</div>
+        </div>
+        <div class="border rounded-lg p-3">
+          <div class="font-semibold">Zeke &amp; Trish Balwhan</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card p-5 border-l-4 border-[color:var(--coral)]">
+      <div class="flex items-center gap-2 mb-2">
+        <span class="chip chip-allergy">⚠ ALLERGY</span>
+        <span class="text-xs text-gray-500">1 guest — confirm identity on arrival</span>
+      </div>
+      <h3 class="font-bold mb-2">Dietary Restrictions</h3>
+      <ul class="text-sm space-y-1">
+        <li>❌ Tree nuts &amp; peanuts</li>
+        <li>❌ Pork (incl. lard, bacon, ham)</li>
+        <li>❌ Gluten (incl. soy sauce, beer, malt)</li>
+        <li>❌ Lactose / dairy</li>
+      </ul>
+      <p class="text-xs text-gray-600 mt-3 italic">Treat as celiac until told otherwise. Dedicated board, knife &amp; skillet.</p>
+    </div>
+  </div>
+
+  <div class="grid md:grid-cols-4 gap-4 mt-4">
+    <div class="card p-4">
+      <div class="text-xs uppercase tracking-wide text-gray-500">Meals at villa</div>
+      <div class="text-2xl font-bold leaf-text mt-1">7 BFs · 6 Dinners</div>
+      <div class="text-xs text-gray-500 mt-1">No lunches · Thu dinner = Pier 1</div>
+    </div>
+    <div class="card p-4">
+      <div class="text-xs uppercase tracking-wide text-gray-500">Mandatory break</div>
+      <div class="text-2xl font-bold coral-text mt-1">4:00–5:30 PM</div>
+      <div class="text-xs text-gray-500 mt-1">Every service day · 1.5 hr</div>
+    </div>
+    <div class="card p-4">
+      <div class="text-xs uppercase tracking-wide text-gray-500">Chef night off</div>
+      <div class="text-2xl font-bold mt-1">Thu Jun 4</div>
+      <div class="text-xs text-gray-500 mt-1">Birthday at Pier 1 · prep day</div>
+    </div>
+    <div class="card p-4">
+      <div class="text-xs uppercase tracking-wide text-gray-500">Activity day</div>
+      <div class="text-2xl font-bold mt-1">Tue Jun 2</div>
+      <div class="text-xs text-gray-500 mt-1">6 AM fishing · 7 AM golf</div>
+    </div>
+  </div>
+
+  <div class="card p-5 mt-4">
+    <h2 class="text-lg font-bold mb-3">Strategic Notes</h2>
+    <ol class="text-sm space-y-2 list-decimal pl-5">
+      <li><strong>Send shopping list to guest org 48 hr ahead.</strong> They source groceries.</li>
+      <li><strong>Thursday is your prep gold.</strong> Pier 1 night = pre-portion Friday's farewell, deep-clean.</li>
+      <li><strong>Never plan a dinner that requires Tuesday's catch.</strong> Always have snapper Plan B portioned.</li>
+      <li><strong>Allergy guest first, every meal.</strong> Cook her plate on a sanitized board before the regular line.</li>
+      <li><strong>Heavy → Heavy → Heavy → Moderate → Light reset → Off → Farewell.</strong> Prevents palate fatigue.</li>
+      <li><strong>Tonya gets a Wed-night birthday-eve dessert</strong> so the chef gets credit (Thursday dinner is out).</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ CALENDAR ============ -->
+<section data-section="calendar" class="hidden">
+  <div class="card p-5">
+    <h2 class="text-lg font-bold mb-4">7-Day Service Calendar</h2>
+    <div class="grid md:grid-cols-7 gap-2 text-sm" id="calendar-grid"></div>
+    <div class="mt-4 flex flex-wrap gap-3 text-xs">
+      <span><span class="menu-dot" style="background:var(--leaf)"></span>Breakfast</span>
+      <span><span class="menu-dot" style="background:var(--sun)"></span>Dinner</span>
+      <span><span class="menu-dot" style="background:var(--coral)"></span>Special / Off</span>
+      <span><span class="menu-dot" style="background:#a78bfa"></span>Activity</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MENUS ============ -->
+<section data-section="menus" class="hidden space-y-3">
+  <div class="card p-5">
+    <h2 class="text-lg font-bold mb-3">Daily Menus</h2>
+    <div id="menu-day-tabs" class="flex flex-wrap gap-2 mb-5"></div>
+    <div id="menu-content"></div>
+  </div>
+</section>
+
+<!-- ============ SHOPPING ============ -->
+<section data-section="shopping" class="hidden">
+  <div class="card p-5">
+    <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+      <h2 class="text-lg font-bold">Master Shopping List</h2>
+      <div class="text-xs text-gray-500">Send to guest's organization 48 hr ahead · <span id="shopping-progress">0</span> checked</div>
+    </div>
+    <div id="shopping-list" class="grid md:grid-cols-2 gap-5"></div>
+  </div>
+</section>
+
+<!-- ============ SCHEDULE ============ -->
+<section data-section="schedule" class="hidden space-y-4">
+  <div class="card p-5">
+    <h2 class="text-lg font-bold mb-3">Daily Chef Schedule Templates</h2>
+    <div class="flex flex-wrap gap-2 mb-5" id="sched-day-tabs"></div>
+    <div id="sched-content"></div>
+  </div>
+</section>
+
+<!-- ============ ALLERGY ============ -->
+<section data-section="allergy" class="hidden">
+  <div class="card p-5 border-l-4 border-[color:var(--coral)]">
+    <h2 class="text-lg font-bold mb-3 flex items-center gap-2">⚠ Allergy Protocol</h2>
+    <p class="text-sm text-gray-700">One guest (woman — confirm identity on arrival) has all four restrictions stacked. This is the highest single risk of the week. The protocol below runs every service.</p>
+
+    <h3 class="font-bold mt-5 mb-2 text-sm uppercase tracking-wide text-gray-700">Setup (do this once, Saturday)</h3>
+    <ul class="text-sm space-y-1 list-disc pl-6">
+      <li>Color-code: <span class="chip chip-allergy">RED</span> board, knife, tongs, skillet, sponge — used <strong>only</strong> for her food.</li>
+      <li>Dedicated pantry shelf labeled "ALLERGY — DO NOT CROSS-USE."</li>
+      <li>Brief any house staff: never re-plate, never swap, never garnish her dish.</li>
+    </ul>
+
+    <h3 class="font-bold mt-5 mb-2 text-sm uppercase tracking-wide text-gray-700">Every Meal</h3>
+    <ol class="text-sm space-y-1 list-decimal pl-6">
+      <li>Cook her plate <strong>first</strong>, before the regular line is dirty.</li>
+      <li>Plate it, cover with foil, label "Allergy — [Name]."</li>
+      <li>Walk it to the table yourself. No house-staff handoff.</li>
+      <li>If you touch pork/dairy/gluten/nuts mid-service, wash hands + change apron before touching her plate again.</li>
+    </ol>
+
+    <h3 class="font-bold mt-5 mb-2 text-sm uppercase tracking-wide text-gray-700">Hidden Traps to Avoid</h3>
+    <div class="grid md:grid-cols-2 gap-3 text-sm">
+      <div class="border rounded-lg p-3">
+        <div class="font-semibold coral-text">Gluten lurks in:</div>
+        <ul class="text-xs mt-1 space-y-0.5 list-disc pl-5">
+          <li>Soy sauce → use <strong>tamari</strong></li>
+          <li>Jerk seasoning blends with breadcrumbs</li>
+          <li>Beer (Red Stripe ✗) → cider or GF beer</li>
+          <li>Malt vinegar</li>
+          <li>Curry powder fillers — verify brand</li>
+          <li>Hard-dough bread, bammy (use cassava bammy)</li>
+        </ul>
+      </div>
+      <div class="border rounded-lg p-3">
+        <div class="font-semibold coral-text">Pork lurks in:</div>
+        <ul class="text-xs mt-1 space-y-0.5 list-disc pl-5">
+          <li>Lard in some local pastry</li>
+          <li>Bacon fat sharing pan with eggs</li>
+          <li>Stock cubes (some contain pork)</li>
+          <li>Gelatin in some desserts → use agar</li>
+        </ul>
+      </div>
+      <div class="border rounded-lg p-3">
+        <div class="font-semibold coral-text">Dairy lurks in:</div>
+        <ul class="text-xs mt-1 space-y-0.5 list-disc pl-5">
+          <li>Butter finish on lobster → olive oil + lime</li>
+          <li>Cream in coffee — keep <strong>oat milk</strong></li>
+          <li>Hollandaise → make olive-oil version</li>
+          <li>Cake batters — use coconut cream</li>
+        </ul>
+      </div>
+      <div class="border rounded-lg p-3">
+        <div class="font-semibold coral-text">Nuts lurks in:</div>
+        <ul class="text-xs mt-1 space-y-0.5 list-disc pl-5">
+          <li>Almond flour in GF baking → use sorghum/oat</li>
+          <li>Pesto, satay, mole, granola</li>
+          <li>Coconut is technically safe but always confirm with guest</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 class="font-bold mt-5 mb-2 text-sm uppercase tracking-wide text-gray-700">Safe Default Builds</h3>
+    <ul class="text-sm list-disc pl-6 space-y-1">
+      <li><strong>Protein:</strong> grilled fish, chicken, beef, goat, lamb (no jerk rubs unless verified GF)</li>
+      <li><strong>Starch:</strong> rice &amp; peas (coconut milk = naturally OK), boiled green banana, breadfruit, GF bread</li>
+      <li><strong>Veg:</strong> callaloo, plantain, escovitch veg, all roasted veg in olive oil</li>
+      <li><strong>Sauce:</strong> escovitch (vinegar/pepper/onion), mango salsa, fresh herbs + lime</li>
+      <li><strong>Dessert:</strong> coconut sorbet, rum-soaked fruit, agar-set panna cotta with coconut</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ LOGISTICS ============ -->
+<section data-section="logistics" class="hidden">
+  <div class="grid md:grid-cols-2 gap-4">
+    <div class="card p-5">
+      <h3 class="font-bold mb-2">Arrivals · Sat May 30</h3>
+      <ul class="text-sm space-y-1">
+        <li><strong>3:26 PM</strong> — UA 1633 · Howards (Rob, Sierra) <em>— pick up first</em></li>
+        <li><strong>4:17 PM</strong> — AA 2890 · main party (8 guests)</li>
+      </ul>
+      <p class="text-xs text-gray-500 mt-2">Plan arrival snack out by 4:30, replenish 5:30, dinner 7:30 PM.</p>
+    </div>
+    <div class="card p-5">
+      <h3 class="font-bold mb-2">Departures · Sat Jun 6</h3>
+      <ul class="text-sm space-y-1">
+        <li><strong>12:47 PM</strong> — AA 1337 · Sevillas, Polites</li>
+        <li><strong>2:05 PM</strong> — WN 1832 · Balwhans</li>
+        <li><strong>2:32 PM</strong> — AA 1085 · Turners</li>
+        <li><strong>2:40 PM</strong> — UA 223/2078 · Howards</li>
+      </ul>
+      <p class="text-xs text-gray-500 mt-2">Breakfast 6:30–8:30 AM; pack road snacks per couple.</p>
+    </div>
+    <div class="card p-5">
+      <h3 class="font-bold mb-2">Activities</h3>
+      <ul class="text-sm space-y-2">
+        <li><strong>Tue Jun 2 · 6 AM</strong> — Fishing (2 guests). Grab-and-go breakfast set 5:30 AM.</li>
+        <li><strong>Tue Jun 2 · 7–7:30 AM</strong> — Golf at Half Moon. Fishers join mid-round.</li>
+        <li><strong>Thu Jun 4 · 6 PM</strong> — Pier 1 dinner (booked) for Tonya's birthday.</li>
+      </ul>
+    </div>
+    <div class="card p-5">
+      <h3 class="font-bold mb-2">Phone &amp; Contacts</h3>
+      <ul class="text-sm space-y-1">
+        <li>Guest travel phone: <strong>+1 480 372 7688</strong> (Joshua)</li>
+        <li>Driver / van: confirm with villa concierge</li>
+        <li>Groceries: <em>organization-supplied</em> — chef sends list</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="text-center text-xs text-gray-500 py-8">
+  Plan compiled May 28, 2026 · Subject to chef adjustment based on arrival inventory &amp; catch
+</footer>
+
+<script>
+/* ---------- DATA ---------- */
+const days = [
+  { key:'sat30', label:'Sat May 30', short:'Sat 5/30', kind:'arrival',
+    breakfast:null,
+    bfNote:'Guests arrive PM',
+    arrivalSnack:{
+      title:'Arrival Snack · 4:30 PM',
+      items:[
+        'Festival, plantain, jerk-corn chips · pickapeppa-mango salsa, smashed avocado, dairy-free spinach dip',
+        'Fruit platter: pineapple, mango, papaya, watermelon, soursop, otaheite apple',
+        'Cheese board + dairy-free cashew-free cheese alt + GF rice crackers (separate, labeled)',
+      ],
+    },
+    dinner:{
+      title:'Welcome Jamaican Dinner · 7:30 PM',
+      items:[
+        'Jerk chicken — charcoal-finished',
+        'Pan-seared snapper escovitch (chef pick: lighter than grouper, GF/DF naturally)',
+        'Rice &amp; peas — coconut milk, scotch bonnet, thyme',
+        '<strong>Chef\'s local favorite:</strong> Festival (sweet cornmeal dumpling) + steamed callaloo with coconut &amp; garlic',
+        'Bammy (table) + <span class="chip chip-allergy">cassava bammy for allergy guest</span>',
+        'Dessert: rum-soaked pineapple + coconut sorbet <span class="chip chip-leaf">all safe</span>',
+      ],
+    },
+  },
+  { key:'sun31', label:'Sun May 31', short:'Sun 5/31', kind:'standard',
+    breakfast:{ title:'Hearty Jamaican Brunch · 8:30–10:00 AM', items:[
+      'Bacon (+ <span class="chip chip-allergy">turkey bacon, separate pan</span>)',
+      'Eggs any style', 'Banana pancakes (+ <span class="chip chip-allergy">GF version</span>)',
+      'Ackee on toast', 'Sorrel + soursop juice', 'Fresh tropical fruit',
+    ]},
+    dinner:{ title:'Surf &amp; Turf · 7:00 PM', items:[
+      'Jerk-marinated ribeye',
+      'Grilled lobster tail (+ <span class="chip chip-allergy">olive oil + lime, no butter</span>)',
+      'Roasted breadfruit · Grilled callaloo · Garlic-thyme corn',
+      'Coconut panna cotta (agar — safe for all)',
+    ]},
+  },
+  { key:'mon01', label:'Mon Jun 1', short:'Mon 6/1', kind:'standard',
+    breakfast:{ title:'National Breakfast · 8:30 AM', items:[
+      'Ackee &amp; saltfish', 'Fried plantain', 'Hard-dough toast (+ <span class="chip chip-allergy">GF bread</span>)',
+      'Boiled green banana', 'Johnnycakes',
+    ]},
+    dinner:{ title:'Curry Goat &amp; Oxtail Night · 7:00 PM', items:[
+      'Curry goat', 'Oxtail with butter beans', 'White rice · fried plantain · steamed veg',
+      '<span class="chip chip-allergy">Allergy plate: chicken curry, no-pork stock, GF roux</span>',
+    ]},
+  },
+  { key:'tue02', label:'Tue Jun 2', short:'Tue 6/2', kind:'activity',
+    activity:'🎣 Fishing 6 AM · ⛳ Golf 7–7:30 AM Half Moon',
+    breakfast:{ title:'Grab-and-Go · set out 5:30 AM', items:[
+      'Pre-wrapped breakfast burritos (+ <span class="chip chip-allergy">GF corn tortilla</span>)',
+      'Banana bread muffins (+ <span class="chip chip-allergy">GF, nut-free batch</span>)',
+      'Boiled eggs · fruit cups · smoothies · thermos coffee · pressed juice',
+    ]},
+    dinner:{ title:'Catch of the Day BBQ · 7:30 PM', items:[
+      '<strong>If catch:</strong> grilled whole mahi/wahoo/snapper, herbs',
+      '<strong>Plan B:</strong> pre-marinated whole roasted jerk snapper',
+      'Roasted breadfruit · grilled pineapple slaw · rice &amp; peas · garlic shrimp skewers',
+    ]},
+  },
+  { key:'wed03', label:'Wed Jun 3', short:'Wed 6/3', kind:'light',
+    breakfast:{ title:'Continental + Hot Orders · 8:30 AM', items:[
+      'Custom omelets', 'Smoked salmon platter', 'Sliced fruit',
+      'Granola + coconut yogurt (DF)', '<span class="chip chip-allergy">GF banana bread</span>',
+    ]},
+    dinner:{ title:'Light Reset · Caribbean Ceviche · 7:00 PM', items:[
+      'Snapper ceviche w/ plantain chips',
+      'Grilled grouper + mango salsa', 'Coconut rice · ensalada',
+      'Coconut-lime panna cotta (agar — all safe)',
+      '<span class="chip chip-sun">🎂 Tonya birthday-eve candle dessert</span>',
+    ]},
+  },
+  { key:'thu04', label:'Thu Jun 4', short:'Thu 6/4', kind:'off',
+    breakfast:{ title:'🎂 Birthday Breakfast · 8:30 AM', items:[
+      'Mimosa flutes', 'Plated French toast w/ caramelized banana + edible flower',
+      '+ <span class="chip chip-allergy">GF brioche French toast version</span>',
+      'Eggs &amp; meats on side', 'Birthday parfait at Tonya\'s seat',
+    ]},
+    dinner:{ title:'CHEF OFF — Pier 1 6:00 PM (booked)', items:[
+      'Use evening for Friday farewell deep-prep:',
+      'Start jerk marinades · render stocks · bake GF dessert base · deep-clean kitchen',
+    ]},
+  },
+  { key:'fri05', label:'Fri Jun 5', short:'Fri 6/5', kind:'farewell',
+    breakfast:{ title:'American Farewell Breakfast · 8:30 AM', items:[
+      'Bacon', 'Eggs benedict (+ <span class="chip chip-allergy">GF/DF version, olive-oil hollandaise</span>)',
+      'Pancakes', 'Fresh juice',
+    ]},
+    dinner:{ title:'Grand Farewell Tasting · 7:00 PM', items:[
+      '1. Amuse: ackee bruschetta on plantain crisp',
+      '2. Pumpkin soup w/ coconut cream',
+      '3. Jerk lamb chops + jerk lobster + breadfruit medley + rice &amp; peas',
+      '4. Rum cake (+ <span class="chip chip-allergy">sorghum-oat GF/DF version</span>)',
+      'Printed menu cards at each seat',
+    ]},
+  },
+  { key:'sat06', label:'Sat Jun 6', short:'Sat 6/6', kind:'departure',
+    breakfast:{ title:'Early Departure Breakfast · 6:30–8:30 AM', items:[
+      'Pastries · fresh fruit · yogurt · eggs to order',
+      'Coffee &amp; tea station', 'Pack road snacks per couple (fruit + GF muffin + water)',
+    ]},
+    dinner:null,
+  },
+];
+
+const shopping = {
+  'Proteins': [
+    'Chicken — 8 lb bone-in (jerk) + 4 lb breast (allergy curry)',
+    'Whole snapper × 4 (2 lb each)',
+    'Grouper fillets — 6 lb',
+    'Mahi/wahoo — standby for Tue',
+    'Lobster tails × 12',
+    'Ribeye 12 oz × 10',
+    'Goat meat — 5 lb',
+    'Oxtail — 5 lb',
+    'Lamb chops × 30',
+    'Bacon — 3 lb',
+    'Turkey bacon — 1 lb ⚠ allergy',
+    'Saltfish — 2 lb',
+    'Shrimp — 3 lb',
+    'Smoked salmon — 1 lb',
+    'Eggs — 6 dozen',
+  ],
+  'Produce': [
+    'Pineapple × 4, mango × 8, papaya × 3, watermelon × 1',
+    'Soursop × 2, otaheite apples',
+    'Plantains × 20 (mix green/ripe)',
+    'Breadfruit × 2',
+    'Green bananas × 12, eating bananas × 20',
+    'Limes × 30, lemons × 12',
+    'Scotch bonnets × 15',
+    'Bell peppers × 10',
+    'Onions — 8 lb',
+    'Garlic — 4 heads',
+    'Ginger — 1 lb',
+    'Thyme × 8 bunches',
+    'Scallions × 20',
+    'Callaloo × 6 bunches',
+    'Tomatoes — 5 lb',
+    'Avocado × 10',
+    'Carrots, cucumber, lettuce, cabbage (slaw/sides)',
+    'Pumpkin (calabaza) — 5 lb',
+    'Mint, cilantro, parsley',
+    'Edible flowers (birthday plating)',
+  ],
+  'Pantry · Dry · Cans': [
+    'Rice (long grain) — 10 lb',
+    'Kidney beans — 3 lb',
+    'Butter beans — 2 lb',
+    'Coconut milk × 12 cans',
+    'Coconut cream × 4',
+    'Cornmeal — 3 lb',
+    'All-purpose flour — 5 lb',
+    'Jerk seasoning (verify GF — Walkerswood Traditional)',
+    'Soy sauce + Tamari (GF) ⚠',
+    'Vinegars: white, malt (table only), apple cider',
+    'Pickapeppa, scotch bonnet sauce',
+    'Olive oil 1 gal, coconut oil 1 qt, veg oil 1 gal',
+    'Brown sugar, white, demerara, honey',
+    'Sea salt, pepper, allspice 1 lb, nutmeg, cinnamon, bay leaves',
+    'Jamaican curry powder (verify no wheat filler)',
+    'Hard-dough bread × 2, bammy × 4',
+  ],
+  'Allergy-Dedicated Shelf ⚠': [
+    'GF flour blend — 3 lb',
+    'GF bread × 2 loaves',
+    'GF crackers',
+    'GF pancake mix',
+    'GF pasta',
+    'GF tortilla',
+    'Sorghum + oat flour (almond-free GF baking)',
+    'Cassava bammy × 2',
+    'Tamari (GF soy)',
+    'Coconut yogurt — 1 qt',
+    'Coconut milk + rice milk (drinking)',
+    'Oat milk for coffee',
+    'Dairy-free butter (Earth Balance or Miyoko\'s)',
+    'Color-coded RED board + knife + skillet',
+  ],
+  'Beverages': [
+    'Prosecco × 4 (mimosas + birthday)',
+    'Appleton + Wray &amp; Nephew rum',
+    'Red Stripe (⚠ contains gluten — flag)',
+    'GF beer / cider (allergy guest)',
+    'Sorrel concentrate, ginger beer',
+    'Sparkling water × 24, still water, sodas, mixers',
+    'Coffee, tea',
+  ],
+  'Service · Cleaning · Misc': [
+    'Foil, parchment, freezer bags, deli containers',
+    'Labels + sharpie',
+    'Bleach + sanitizer',
+    'Color-coded sponges by zone',
+  ],
+};
+
+const schedules = {
+  'Standard cooking day': {
+    note: 'Sun, Mon, Wed, Fri',
+    blocks: [
+      ['6:30 AM','Arrive · espresso · set kitchen · light grill if smoking proteins'],
+      ['7:00–7:30','Pull dinner proteins · start stocks/braises'],
+      ['7:30–8:30','Breakfast prep + coffee/juice station'],
+      ['8:30–10:00','BREAKFAST SERVICE (rolling)','service'],
+      ['10:00–11:00','Breakfast cleanup · dishwasher #1 · wipe + sweep'],
+      ['11:00–12:30','Dinner mise · butcher · <strong>allergy parallel FIRST on clean board</strong> · marinate'],
+      ['12:30–1:00','Chef lunch + hydrate'],
+      ['1:00–3:30','Long cooks · braises · sauces · desserts'],
+      ['3:30–4:00','Station setup · brief house staff'],
+      ['4:00–5:30','🛑 BREAK — walk · shower · change uniform','break'],
+      ['5:30–6:45','Final cook · plating prep · table cards'],
+      ['7:00–8:30','DINNER SERVICE · walk allergy plate yourself','service'],
+      ['8:30–9:30','Breakdown · soak pots · dishwasher #2–3'],
+      ['9:30–10:00','Wipe-down · mop · prep tomorrow\'s pull list · lock down'],
+    ],
+  },
+  'Saturday · Arrival': {
+    note: 'May 30 — first contact',
+    blocks: [
+      ['1:00 PM','Arrive ahead of guests · inventory delivered groceries'],
+      ['1:30–3:00','Confirm allergy guest identity with villa staff'],
+      ['3:00–4:00','Snack platters built · cheese boards · allergy board separate'],
+      ['4:30 PM','Howards arrive (~4 PM) — snack out','service'],
+      ['5:30','Main party arrives (~5 PM) — replenish snacks','service'],
+      ['5:30–7:00','Final fire jerk chicken · sear snapper · plate'],
+      ['7:30 PM','WELCOME DINNER','service'],
+      ['8:30–9:30','Breakdown · prep Sun breakfast'],
+    ],
+  },
+  'Tuesday · Activity Day': {
+    note: 'Jun 2 — fishing 6 AM / golf 7 AM',
+    blocks: [
+      ['5:00 AM','Arrive · set grab-and-go station'],
+      ['5:30','Coffee + smoothies · burritos warming','service'],
+      ['6:00–7:30','Stage second wave for golfers'],
+      ['7:30–8:30','Cleanup'],
+      ['8:30–10:00','Rest equivalent · light recovery','break'],
+      ['10:00–1:00','Dinner prep · pre-marinate snapper Plan B'],
+      ['1:00–4:00','Light prep · check on catch ETA'],
+      ['4:00–5:30','🛑 BREAK','break'],
+      ['5:30 onward','Fire grill · adapt to catch · dinner 7:30 PM','service'],
+    ],
+  },
+  'Thursday · Chef Off Evening': {
+    note: 'Jun 4 — birthday + Pier 1',
+    blocks: [
+      ['7:00 AM','Arrive early · birthday breakfast plating · mimosa station'],
+      ['8:30–10:00','BIRTHDAY BREAKFAST SERVICE','service'],
+      ['10:00–11:30','Cleanup + START Friday prep · jerk marinades · stocks'],
+      ['11:30–2:00','Bake GF dessert base · deep-clean kitchen'],
+      ['2:00 PM','OFF — full evening break until Fri 6:30 AM','break'],
+    ],
+  },
+  'Saturday · Departure': {
+    note: 'Jun 6 — light early breakfast',
+    blocks: [
+      ['6:00 AM','Arrive · pastries out · coffee on · eggs station ready'],
+      ['6:30–8:30','Rolling early breakfast','service'],
+      ['8:30–10:00','Pack road snacks per couple · hostess gift on counter'],
+      ['10:00–11:00','Deep clean · pantry inventory · villa handoff'],
+    ],
+  },
+};
+
+/* ---------- RENDER ---------- */
+// Tabs
+document.querySelectorAll('.tab-btn[data-tab]').forEach(b => {
+  b.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(x => x.classList.remove('active'));
+    b.classList.add('active');
+    const target = b.dataset.tab;
+    document.querySelectorAll('[data-section]').forEach(s => s.classList.toggle('hidden', s.dataset.section !== target));
+    window.scrollTo({ top:0, behavior:'smooth' });
+  });
+});
+
+// Calendar
+const cal = document.getElementById('calendar-grid');
+days.forEach(d => {
+  const kindStyle = {
+    arrival:'border-amber-300 bg-amber-50',
+    activity:'border-violet-300 bg-violet-50',
+    light:'border-sky-300 bg-sky-50',
+    off:'border-pink-300 bg-pink-50',
+    farewell:'border-emerald-300 bg-emerald-50',
+    departure:'border-stone-300 bg-stone-50',
+    standard:'border-gray-200 bg-white',
+  }[d.kind];
+  const el = document.createElement('div');
+  el.className = `border rounded-lg p-3 ${kindStyle}`;
+  el.innerHTML = `
+    <div class="text-xs font-semibold text-gray-600">${d.short}</div>
+    ${d.activity ? `<div class="text-xs mt-1 text-violet-700 font-semibold">${d.activity}</div>` : ''}
+    ${d.breakfast ? `<div class="mt-2 text-xs"><span class="menu-dot" style="background:var(--leaf)"></span><strong>BF</strong> ${d.breakfast.title.split('·')[0].trim()}</div>` : (d.bfNote ? `<div class="mt-2 text-xs text-gray-500">${d.bfNote}</div>` : '')}
+    ${d.arrivalSnack ? `<div class="text-xs mt-1"><span class="menu-dot" style="background:var(--coral)"></span>Snack 4:30 PM</div>` : ''}
+    ${d.dinner ? `<div class="text-xs mt-1"><span class="menu-dot" style="background:var(--sun)"></span><strong>DN</strong> ${d.dinner.title.split('·')[0].trim()}</div>` : ''}
+  `;
+  cal.appendChild(el);
+});
+
+// Menus
+const menuTabs = document.getElementById('menu-day-tabs');
+const menuContent = document.getElementById('menu-content');
+days.forEach((d, i) => {
+  const btn = document.createElement('button');
+  btn.className = 'day-tab' + (i === 0 ? ' active' : '');
+  btn.textContent = d.short;
+  btn.addEventListener('click', () => {
+    menuTabs.querySelectorAll('.day-tab').forEach(x => x.classList.remove('active'));
+    btn.classList.add('active');
+    renderMenu(d);
+  });
+  menuTabs.appendChild(btn);
+});
+function renderMenu(d) {
+  const sections = [];
+  if (d.activity) sections.push(`<div class="text-violet-700 font-semibold text-sm mb-3">${d.activity}</div>`);
+  if (d.arrivalSnack) sections.push(menuBlock(d.arrivalSnack, 'coral'));
+  if (d.breakfast) sections.push(menuBlock(d.breakfast, 'leaf'));
+  if (d.dinner) sections.push(menuBlock(d.dinner, 'sun'));
+  menuContent.innerHTML = sections.join('');
+}
+function menuBlock(b, color) {
+  return `
+    <div class="mb-5">
+      <h3 class="font-bold text-base mb-2"><span class="menu-dot" style="background:var(--${color})"></span>${b.title}</h3>
+      <ul class="text-sm space-y-1.5 pl-5 list-disc text-gray-800">
+        ${b.items.map(i => `<li>${i}</li>`).join('')}
+      </ul>
+    </div>
+  `;
+}
+renderMenu(days[0]);
+
+// Shopping
+const shoppingEl = document.getElementById('shopping-list');
+const progressEl = document.getElementById('shopping-progress');
+let checkedCount = 0;
+let totalCount = 0;
+Object.entries(shopping).forEach(([cat, items]) => {
+  totalCount += items.length;
+  const isAllergy = cat.includes('Allergy');
+  const card = document.createElement('div');
+  card.className = 'border rounded-lg p-4 ' + (isAllergy ? 'border-[color:var(--coral)] bg-red-50/40' : 'border-gray-200');
+  card.innerHTML = `<h3 class="font-bold mb-2 ${isAllergy ? 'coral-text' : 'leaf-text'}">${cat}</h3>`;
+  const ul = document.createElement('ul');
+  ul.className = 'text-sm space-y-1.5';
+  items.forEach((it, idx) => {
+    const id = (cat + idx).replace(/[^a-z0-9]/gi,'');
+    const li = document.createElement('li');
+    li.className = 'flex items-start gap-2';
+    li.innerHTML = `
+      <input type="checkbox" class="check mt-0.5" id="chk-${id}" />
+      <label for="chk-${id}" class="cursor-pointer">${it}</label>
+    `;
+    ul.appendChild(li);
+  });
+  card.appendChild(ul);
+  shoppingEl.appendChild(card);
+});
+progressEl.textContent = `0 / ${totalCount}`;
+shoppingEl.addEventListener('change', e => {
+  if (e.target.type === 'checkbox') {
+    checkedCount += e.target.checked ? 1 : -1;
+    progressEl.textContent = `${checkedCount} / ${totalCount}`;
+    const lbl = e.target.nextElementSibling;
+    lbl.style.textDecoration = e.target.checked ? 'line-through' : '';
+    lbl.style.color = e.target.checked ? '#9ca3af' : '';
+  }
+});
+
+// Schedule
+const schedTabs = document.getElementById('sched-day-tabs');
+const schedContent = document.getElementById('sched-content');
+Object.keys(schedules).forEach((k, i) => {
+  const btn = document.createElement('button');
+  btn.className = 'day-tab' + (i === 0 ? ' active' : '');
+  btn.textContent = k;
+  btn.addEventListener('click', () => {
+    schedTabs.querySelectorAll('.day-tab').forEach(x => x.classList.remove('active'));
+    btn.classList.add('active');
+    renderSched(k);
+  });
+  schedTabs.appendChild(btn);
+});
+function renderSched(k) {
+  const s = schedules[k];
+  schedContent.innerHTML = `
+    <div class="text-xs text-gray-500 italic mb-3">${s.note}</div>
+    <div class="timeline-grid">
+      ${s.blocks.map(b => `
+        <div class="timeline-time">${b[0]}</div>
+        <div class="timeline-block ${b[2] || ''}">${b[1]}</div>
+      `).join('')}
+    </div>
+  `;
+}
+renderSched(Object.keys(schedules)[0]);
+</script>
+
+</body>
+</html>
